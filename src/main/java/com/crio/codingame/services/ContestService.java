@@ -38,7 +38,7 @@ public class ContestService implements IContestService {
     @Override
     public Contest create(String contestName, Level level, String contestCreator, Integer numQuestion) throws UserNotFoundException, QuestionNotFoundException {
         final User user = userRepository.findByName(contestCreator).orElseThrow(() -> new UserNotFoundException("Cannot Create Contest. Contest Creator for given name: " + contestCreator + " not found!"));
-        final List<Question> questions = questionRepository.findAllQuestionLevelWise(level);
+        List<Question> questions = questionRepository.findAllQuestionLevelWise(level);
         if(questions.isEmpty()){
             throw new QuestionNotFoundException("Cannot create Contest. Enough number of questions can not found. Please try again later!");
         }
