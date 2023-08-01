@@ -10,14 +10,16 @@ import com.crio.codingame.entities.User;
 
 public class UserRepository implements IUserRepository{
 
-    private Map<String,User> userMap=new HashMap<>();
+    private Map<String,User> userMap;
     private Integer autoIncrement = 0;
 
     public UserRepository(){
+        userMap = new HashMap<String,User>();
     }
 
-    public UserRepository(Map<String, User> userMap2){
-        userMap = new HashMap<String,User>();
+    public UserRepository(Map<String, User> userMap){
+        this.userMap = userMap;
+        this.autoIncrement = userMap.size();
     }
 
     @Override
