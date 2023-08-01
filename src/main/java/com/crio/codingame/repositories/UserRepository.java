@@ -17,11 +17,6 @@ public class UserRepository implements IUserRepository{
         userMap = new HashMap<String,User>();
     }
 
-    public UserRepository(Map<String, User> userMap) {
-        this.userMap = userMap;
-        this.autoIncrement = userMap.size();
-    }
-
     @Override
     public User save(User entity) {
         if( entity.getId() == null ){
